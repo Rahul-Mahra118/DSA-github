@@ -18,12 +18,31 @@ class Tree {
   }
 
   //preOrder Traversal
-  preOrderTraversal(root){
-    if(!root) return;
-    console.log(root.value);
-    this.preOrderTraversal(root.left);
-    this.preOrderTraversal(root.right)
+  preOrderTraversal(root) {
+  let result = [];
+
+   function traverse(node) {
+    // 1. Base Case: If the current node is null, stop.
+    if (!node) {
+      return;
+    }
+
+    // 2. Visit the Root: Add the current node's value to the result array.
+    result.push(node.value);
+
+    // 3. Traverse the Left Subtree: Recursive call for the left child.
+    traverse(node.left);
+
+    // 4. Traverse the Right Subtree: Recursive call for the right child.
+    traverse(node.right);
   }
+
+  traverse(root);
+
+  // Print all collected values on a single line.
+  console.log(result.join('->') + '->');
+}
+
 
   //print method to visualise the tree
   printTreeLikeStructure(node = this, prefix = "", isLeft = true) {
