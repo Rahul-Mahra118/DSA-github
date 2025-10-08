@@ -17,6 +17,14 @@ class Tree {
     this.right = val;
   }
 
+  //preOrder Traversal
+  preOrderTraversal(root){
+    if(!root) return;
+    console.log(root.value);
+    this.preOrderTraversal(root.left);
+    this.preOrderTraversal(root.right)
+  }
+
   //print method to visualise the tree
   printTreeLikeStructure(node = this, prefix = "", isLeft = true) {
     if (!node) return;
@@ -49,3 +57,5 @@ root.addRightChild(node3);
 node3.addLeftChild(node4);
 node4.addRightChild(node5);
 root.printTreeLikeStructure(root);
+
+root.preOrderTraversal(root)
